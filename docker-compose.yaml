@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+
+  db:
+    image: mariadb:latest
+    restart: always
+    ports:
+      - "8183:3306"
+    environment:
+      MYSQL_DATABASE: "simple"
+      MYSQL_USER: "admin"
+      MYSQL_PASSWORD: "root"
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+    volumes:
+      - dbdata:/var/lib/mariadb
+
+  nginx:
+    image: jwilder/nginx-proxy
+    ports:
+      - "8181:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    depends_on:
+      - db
+
+  blog:
+    build: ./
+    links:
+      - db
+    restart: always
+    ports:
+      - "8182:80"
+    volumes:
+      - ./:/var/www/html:rw
+
+volumes:
+  dbdata:

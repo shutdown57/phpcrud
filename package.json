@@ -1,0 +1,17 @@
+{
+  "name": "crud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sam <m.shutdown57@gmail.com>",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.9.0",
+    "bulma": "^0.7.5",
+    "bulma-extensions": "^6.2.7",
+    "jquery": "^3.4.1"
+  }
+}
